@@ -42,13 +42,13 @@ def main(file, cmd):
     errcode = process.wait()
     diff = datetime.now() - start
     sys.stdout.write("\r%d seconds %d log lines"%(diff.seconds, count))
-    print
-    print cmd, "done", errcode
+    print()
+    print(cmd, "done", errcode)
     return errcode
 
 if __name__ == "__main__":
     if sys.argv < 1:
-        print "Usage: %s [file info]" % sys.argv[0]
+        print("Usage: %s [file info]" % sys.argv[0])
         sys.exit(1)
 
     sys.exit(main(sys.argv[1], sys.argv[2:]))
