@@ -13,6 +13,10 @@ addons:
   hosts:
     - node1
 
+arch:
+  - amd64
+  - arm64
+
 env:
   - MODULES=Client
   - MODULES=Server
@@ -37,8 +41,9 @@ matrix:
   include:
     - arch: s390x
       jdk: openjdk11
+  exclude:
     - arch: arm64
-      jdk: openjdk11
+      jdk: oraclejdk8
       
 before_install:
   - rvm reload
