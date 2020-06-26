@@ -19,18 +19,18 @@ import traceback
 from xml.etree.ElementTree import ElementTree
 
 def print_detail_information(testcase, fail_or_error):
-    print "-" * 50
-    print "classname: %s / testname: %s" % (testcase.get("classname"), testcase.get("name"))
-    print fail_or_error.text
+    print("-" * 50)
+    print("classname: %s / testname: %s" % (testcase.get("classname"), testcase.get("name")))
+    print(fail_or_error.text)
     stdout = testcase.find("system-out")
     if stdout != None:
-        print "-" * 20, "system-out", "-"*20
-        print stdout.text
+        print("-" * 20, "system-out", "-"*20)
+        print(stdout.text)
     stderr = testcase.find("system-err")
     if stderr != None:
-        print "-" * 20, "system-err", "-"*20
-        print stderr.text
-    print "-" * 50
+        print("-" * 20, "system-err", "-"*20)
+        print(stderr.text)
+    print("-" * 50)
 
 
 def print_error_reports_from_report_file(file_path):
@@ -38,11 +38,11 @@ def print_error_reports_from_report_file(file_path):
     try:
         tree.parse(file_path)
     except:
-        print "-" * 50
-        print "Error parsing %s"%file_path
+        print("-" * 50)
+        print("Error parsing %s"%file_path)
         f = open(file_path, "r");
-        print f.read();
-        print "-" * 50
+        print(f.read());
+        print("-" * 50)
         return
 
     testcases = tree.findall(".//testcase")
@@ -64,17 +64,17 @@ def main(report_dir_path):
     for test_report in glob.iglob(report_dir_path + '/*.xml'):
         file_path = os.path.abspath(test_report)
         try:
-            print "Checking %s" % test_report
+            print("Checking %s" % test_report)
             print_error_reports_from_report_file(file_path)
         except Exception, e:
-            print "Error while reading report file, %s" % file_path
-            print "Exception: %s" % e
+            print("Error while reading report file, %s" % file_path)
+            print("Exception: %s" % e)
             traceback.print_exc()
 
 
 if __name__ == "__main__":
     if sys.argv < 2:
-        print "Usage: %s [report dir path]" % sys.argv[0]
+        print("Usage: %s [report dir path]" % sys.argv[0])
         sys.exit(1)
 
     main(sys.argv[1])
