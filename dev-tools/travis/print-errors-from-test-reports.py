@@ -66,7 +66,7 @@ def main(report_dir_path):
         try:
             print("Checking %s" % test_report)
             print_error_reports_from_report_file(file_path)
-        except Exception, e:
+        except Exception as e:
             print("Error while reading report file, %s" % file_path)
             print("Exception: %s" % e)
             traceback.print_exc()
