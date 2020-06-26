@@ -23,4 +23,4 @@ matches = p.search(rat)
 failed =  matches.group(1)
 
 if re.search('\S', failed):
-  print failed
+  print(failed)
