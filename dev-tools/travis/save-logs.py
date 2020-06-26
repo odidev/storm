@@ -17,7 +17,7 @@ import subprocess
 from datetime import datetime, timedelta
 
 def main(file, cmd):
-    print cmd, "writing to", file
+    print(cmd, "writing to", file)
     out = open(file, "w")
     count = 0
     process = subprocess.Popen(cmd,
