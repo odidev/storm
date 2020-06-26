@@ -11,7 +11,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-echo "Python version :  " `python -V 2>&1`
+echo "Python version :  " `python3 -V 2>&1`
 echo "Ruby version   :  " `ruby -v`
 echo "NodeJs version :  " `node -v`
 echo "Maven version  :  " `mvn -v`
@@ -59,7 +59,7 @@ BUILD_RET_VAL=$?
 for dir in `find . -type d -and -wholename \*/target/\*-reports`;
 do
   echo "Looking for errors in ${dir}"
-  python ${TRAVIS_SCRIPT_DIR}/print-errors-from-test-reports.py "${dir}"
+  python3 ${TRAVIS_SCRIPT_DIR}/print-errors-from-test-reports.py "${dir}"
 done
 
 exit ${BUILD_RET_VAL}
